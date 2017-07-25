@@ -1,0 +1,19 @@
+%h1= @book.title
+%p= @book.price
+= form_for [@book, @comment] do |f|
+  %ul
+    - @comment.errors.full_messages.each do |e|
+      %li= e
+  .form-group
+    = f.label :name
+    = f.text_field :name, class: 'form-control'
+  .form-group
+    = f.label :body
+    = f.text_area :body, class: 'form-control'
+  .form-group
+    = f.submit 'Comment', class: 'btn btn-primary'
+%ul
+  - @book.comments.each do |c|
+    %li
+      %strong= c.name
+      = c.body

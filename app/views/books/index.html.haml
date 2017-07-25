@@ -1,0 +1,11 @@
+= link_to 'New book', [:new, :book], class: 'btn btn-primary pull-right margin-top'
+%h1 Books
+%table.table.table-striped
+  %thead
+    %tr
+      %th Title
+      %th Price
+      %th Actions
+  %tbody
+    = render @books
+= will_paginate @books
