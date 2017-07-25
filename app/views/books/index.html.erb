@@ -1,0 +1,13 @@
+<h1>Hello</h1>
+<% @books.each do |book| %>
+  <ul>
+    <li>
+      <strong><%= book.title %></strong>,
+      <%= book.price %>
+    </li>
+  </ul>
+<% end %>
+<%= link_to 'New book', [:new, :book] %>
+<%= link_to 'New book', '/books/new' %>
+<%= link_to 'New book', new_book_path %>
+<a href="/books/new"></a>
