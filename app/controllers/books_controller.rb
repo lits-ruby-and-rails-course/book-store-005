@@ -1,7 +1,9 @@
 class BooksController < ApplicationController
   before_action :find_book, only: [:show, :edit, :update, :destroy]
+  skip_before_action :authenticate_user!, only: [:index]
 
   def index
+    puts current_user.inspect
     @books = Book.all.paginate(:page => params[:page], :per_page => 10)
   end
 
