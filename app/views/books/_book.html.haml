@@ -4,3 +4,5 @@
       = link_to book.title, book
   %td= book.price
   %td
+    = link_to 'Edit', [:edit, book], class: 'btn btn-primary'
+    = link_to 'Destroy', book, method: :delete, class: 'btn btn-danger', data: {confirm: 'Are you sure?'}

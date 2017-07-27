@@ -5,12 +5,12 @@ class BooksController < ApplicationController
     @books = Book.all.paginate(:page => params[:page], :per_page => 10)
   end
 
-  def new
-    @book = Book.new
-  end
-
   def show
     @comment = @book.comments.new
+  end
+
+  def new
+    @book = Book.new
   end
 
   def create
@@ -20,6 +20,22 @@ class BooksController < ApplicationController
     else
       render 'new'
     end
+  end
+
+  def edit
+  end
+
+  def update
+    if @book.update protected_params
+      redirect_to :books
+    else
+      render 'edit'
+    end
+  end
+
+  def destroy
+    @book.destroy
+    redirect_to :books
   end
 
   protected
