@@ -13,7 +13,9 @@
   .form-group
     = f.submit 'Comment', class: 'btn btn-primary'
 %ul
-  - @book.comments.each do |c|
-    %li
-      %strong= c.name
-      = c.body
+  - @comments.each do |c|
+    - unless c.new_record?
+      %li
+        = c.user.email
+        %strong= c.name
+        = c.body

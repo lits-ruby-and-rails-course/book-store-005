@@ -3,12 +3,19 @@ class BooksController < ApplicationController
   skip_before_action :authenticate_user!, only: [:index]
 
   def index
-    puts current_user.inspect
     @books = Book.all.paginate(:page => params[:page], :per_page => 10)
   end
 
   def show
     @comment = @book.comments.new
+    @comments = @book.comments.includes(:user)
+  end
+
+  def sum
+    a = params[:a].to_i
+    b = params[:b].to_i
+    s = a + b
+    render json: s
   end
 
   def new

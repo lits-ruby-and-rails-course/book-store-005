@@ -2,6 +2,7 @@ class CommentsController < ApplicationController
   def create
     @book = Book.find params[:book_id]
     @comment = @book.comments.new protected_params
+    @comment.user_id = current_user.id
     if @comment.save
       redirect_to @book
     else

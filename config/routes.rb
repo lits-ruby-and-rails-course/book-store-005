@@ -4,6 +4,9 @@ Rails.application.routes.draw do
   # get '/books', to: 'books#index'
   root to: 'books#index'
   resources :books do
+    collection do
+      get 'sum'
+    end
     resources :comments, only: [:create]
   end
 
